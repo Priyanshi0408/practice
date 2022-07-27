@@ -33,5 +33,7 @@ urlpatterns = [
     path("research/research_example/<str:slug>",views.research_exam_slug,name = 'research_example'),
     path("research/research_grants/<str:slug>",views.research_exam_resgr,name = 'research_example'),
     path("research/research_down_publi/<str:slug>",views.research_exam_public,name = 'research_example'),
-    
+    path("tender/tender_archive",views.tender_arc,name = 'tender_ar'),
+    path("tender/tender_table",views.tender_exam,name = 'tender_e'),
+    path("tender",views.tender,name="tender")
 ]

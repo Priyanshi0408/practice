@@ -1,9 +1,13 @@
+from datetime import datetime
 from http.client import HTTPResponse
+from django.forms import DateField
 from django.http import HttpResponse
 from django.shortcuts import render
 from nsidc_app.models import about
+from django.utils import timezone
+from datetime import datetime
 
-from nsidc_app.models import informationResearch
+from nsidc_app.models import informationResearch, myclass
 from nsidc_app.models import researchScientist
 from nsidc_app.models import researchGrant
 from nsidc_app.models import scientificPublication, research_example_down_sp
@@ -285,3 +289,27 @@ def research_exam_public(request, slug):
 #     Researchs_Drops = research_drop.objects.filter(slug=slug,slug_drop=slug_drop).first()
 #     context = {'research_drop':Researchs_Drops}
 #     return render(request,'research_drop.html',context)(drop-dowm-->dropdowm through cms / made by priyanshi)
+
+def tender(request):
+    # return HttpResponse("hello world!")
+    return render(request,'tender.html')
+
+def tender_exam(request):
+    c=myclass.objects.all()
+    cd=c.exclude(closingdate__lte=datetime.today())
+    # context = {'tenders' : td1}
+    # myclass.objects.filter(closingdate=datetime.today()).delete()
+    # ob=myclass.objects.filter(slug=slug)
+    context={
+        'co':cd
+    }
+    # return HttpResponse("h")
+    return render(request,'tender_table.html',context)
+
+def tender_arc(request):
+    c=myclass.objects.filter(closingdate__lte=datetime.today())
+    context={
+        'co':c
+    }
+    # return HttpResponse("helo")
+    return render(request,'archive.html',context)

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive Table</title>
+    <style>
+        .gap th{
+            {% comment %} margin:30px; {% endcomment %}
+            padding:10px;
+            border:2px solid red;
+        }
+        .gap td{
+            border:2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>hello world to here</h1>
+    <table class="gap">
+        <th>SLNO.</th>
+        <th>Tender No.</th>
+        <th>Description</th>
+        <th>Release Date</th>
+        <th>Closing Date</th>
+        {% for sl in co %}
+        <tr>
+            <td>{{sl.slno}}</td>
+            <td>{{sl.tenderno}}</td>
+            <td>{{sl.description}}</td>
+            <td>{{sl.releasedate}}</td>
+            <td>{{sl.closingdate}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
